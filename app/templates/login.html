@@ -1,0 +1,53 @@
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="{{ url_for('static', filename='css/common/favicon.ico') }}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Gaëtan MULLER - DATASCIENTIST">
+    <meta name="description" content="CV, Resume, Data, SAS, Consultant, Datascience, Python, Gaëtan Muller, Blog">
+    <meta name="google-site-verification" content="BqpbTqApUbsL--Asy_sY_X69KEGHw55wDRKiYjVTZik" />
+<!--===============================================================================================-->  
+    <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login/util.css') }}">
+<!--===============================================================================================-->
+    {% if title %}
+    <title>{{ title }} - Gmladata</title>
+    {% else %}
+    <title>Gmladata</title>
+    {% endif %}
+    </head>
+    <body>
+    {% block content %}
+    <div class="limiter">
+        <div  class="container-login100" style="background-image: url('../static/images/turf1.jpg');">
+            <div class="wrap-login100 p-t-30 p-b-50">
+                <!-- <span class="login100-form-title p-b-41">LOGIN</span> -->
+
+                <form action="" method="post" novalidate class="login100-form validate-form p-b-33 p-t-5">
+                                            {{ form.hidden_tag() }}
+
+                    <div class="wrap-input100 validate-input" data-validate = "Enter username">
+                        {{ form.username(class="input100") }}
+                        <span class="focus-input100" data-placeholder="&#xe82a;"></span>
+                    </div>
+
+
+                    <div class="wrap-input100 validate-input" data-validate="Enter password">
+                        {{ form.password(class="input100") }}
+
+                        <span class="focus-input100" data-placeholder="&#xe80f;"></span>
+                    </div>
+
+
+                    <div class="container-login100-form-btn m-t-32">
+                        {{ form.submit(class="login100-form-btn") }}
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+</body>
+</html>

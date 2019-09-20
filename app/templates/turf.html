@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+
+    <div class="d-flex flex-row">
+        <div class="input-group w-50" >
+            <select class="custom-select" id="inputGroupSelect04">
+                {% for i in hip %}
+                    <option value="{{i}}">{{i}}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="input-group w-50">
+            <select class="custom-select" id="inputGroupSelect04">
+                {% for j in date %}
+                    <option value="{{j}}">{{j}}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+
+{% endblock %}

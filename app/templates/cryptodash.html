@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h1 class="mt-5">Dashboard Exchanges</h1>
+    <p class="lead"> Tableau mis à jour le <b id='update_time'></b>+2 </p>
+    <p class="lead"> Repartition du portefeuille: USD <b id='usd_total'></b>, Asset <b id='asset_total'></b> soit <b id='position_pct'></b>% en position</p>
+
+    
+  
+    <div class="flex-container">
+      <div class="row">
+        <div class="col-lg-6">
+          <table class="table table-hover table-sm table-bordered " id='tableau'> 
+            <thead class='table-active'>
+                <tr>
+                  <th class="th-sm" scope="col">Exchange</th>
+                  <th class="th-sm" scope="col">Symbol</th>
+                  <th class="th-sm" scope="col">Owning</th>
+                  <th class="th-sm" scope="col">Cours ($)</th>
+                  <th class="th-sm" scope="col">Valeur ($)</th>
+                </tr>
+            </thead>
+          </table>
+        </div>
+        <div class="col-lg-6">
+          <div class="row">
+            <div id="donutchart" class="col-lg-12"></div>
+            <div id="curve_chart" style="width: 700px; height: 400px" class="col-lg-12"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    
+    <script src="../static/js/functions.js"></script>
+    <script src="../static/js/data_handle_detail.js"></script>
+    <script src="../static/js/data_handle_total.js"></script>
+
+
+{% endblock %}

@@ -1,0 +1,2 @@
+FLASK_APP=turf.py
+FLASK_ENV=development
