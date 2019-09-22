@@ -2,9 +2,26 @@
 
 
 {% block content %}
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">id_num</th>
+                <th scope="col">date</th>
+                <th scope="col">hippodrome</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for reunion in reunions %}
+            <tr>
+                <td>{{ reunion.id_num }}</a></td>
+                <td>{{ reunion.date }}</td>
+                <td>{{ reunion.hippodrome }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
-
-    <div class="d-flex flex-row">
+    <!-- <div class="d-flex flex-row">
         <div class="input-group w-50" >
             <select class="custom-select" id="inputGroupSelect04">
                 {% for i in hip %}
@@ -19,7 +36,7 @@
                     <option value="{{j}}">{{j}}</option>
                 {% endfor %}
             </select>
-        </div>
+        </div> -->
     </div>
 
 {% endblock %}

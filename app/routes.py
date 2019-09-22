@@ -56,11 +56,7 @@ def register():
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
 
-@app.route('/turf')
+@app.route('/turf', methods=['GET', 'POSTS'])
 def turf():
-    hip_list = [r.hippodrome for r in db.session.query(Reunion.hippodrome).distinct()]
-    hip_list.sort()
-
-    date_list = [r.date for r in db.session.query(Reunion.date).distinct()]
-    date_list.sort()
-    return render_template("turf.html", title='Turf', active='turf', date=date_list, hip=hip_list)
+    reunions = Reunion.query.limit(1000)
+    return render_template("turf.html", title='Turf', active='turf', reunions=reunions)
