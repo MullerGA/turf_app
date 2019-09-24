@@ -2,6 +2,8 @@ from flask import render_template, flash, redirect, url_for
 from app import app, db
 
 from app.forms import LoginForm, RegistrationForm
+from app.turf_forms import TurfForm
+
 
 from flask_login import current_user, login_user
 from flask_login import logout_user
@@ -10,6 +12,9 @@ from flask_login import login_required
 
 from flask import request
 from werkzeug.urls import url_parse
+
+
+from datetime import datetime
 
 
 @app.route('/')
@@ -56,7 +61,16 @@ def register():
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
 
-@app.route('/turf', methods=['GET', 'POSTS'])
+@app.route('/turf', methods=['GET', 'POST'])
 def turf():
-    reunions = Reunion.query.limit(1000)
-    return render_template("turf.html", title='Turf', active='turf', reunions=reunions)
+    form = TurfForm()
+    form.date.choices = [(reunion.id_num, reunion.date.strftime("%Y/%m/%d")) for reunion in Reunion.query.all()]
+    form.hippodrome.choices = [(reunion.id_num, reunion.hippodrome) for reunion in Reunion.query.all()]
+
+    if request.method == 'POST':
+        hippodrome = Reunion.query.filter_by(id_num = form.date.data).all()
+        return '<h1> Date: {}, Hippodrome: {} </h1>'.format(form.date.data, hippodrome.name)
+
+    # print(form.date.choices)
+    # reunions = Reunion.query.limit(1000)
+    return render_template("turf.html", title='Turf', active='turf', form = form)
